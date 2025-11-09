@@ -6,7 +6,7 @@
 /*   By: cel-hajj <cel-hajj@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 23:00:07 by cel-hajj          #+#    #+#             */
-/*   Updated: 2025/11/06 22:04:25 by cel-hajj         ###   ########.fr       */
+/*   Updated: 2025/11/09 23:04:08 by cel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,5 @@ char	*clear_buffer(char *buffer);
 char	*ft_strdup(const char *s1);
 char	*ft_error(char *buffer);
 size_t	ft_strlen(char const *s);
-
-/* *************** */
-/* Bonus Functions */
-/* *************** */
 
 #endif

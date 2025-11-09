@@ -6,7 +6,7 @@
 /*   By: cel-hajj <cel-hajj@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 23:08:02 by cel-hajj          #+#    #+#             */
-/*   Updated: 2025/11/06 22:06:06 by cel-hajj         ###   ########.fr       */
+/*   Updated: 2025/11/09 23:06:41 by cel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*extract_line(char *buffer)
 	if (!line)
 		return (NULL);
 	i = 0;
-	while (i < size)
+	while (i < size && buffer[i])
 	{
 		line[i] = buffer[i];
 		i++;
