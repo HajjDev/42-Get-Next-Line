@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cel-hajj <cel-hajj@student.s19.be>         +#+  +:+       +#+        */
+/*   By: cel-hajj <cel-hajj@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 23:08:02 by cel-hajj          #+#    #+#             */
-/*   Updated: 2025/11/09 23:08:10 by cel-hajj         ###   ########.fr       */
+/*   Updated: 2025/11/11 13:23:35 by cel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
+
+char	*ft_error(char *buffer)
+{
+	free(buffer);
+	buffer = NULL;
+	return (NULL);
+}
 
 char	*extract_line(char *buffer)
 {
@@ -51,7 +58,7 @@ char	*clear_buffer(char *buffer)
 	}
 	new_buffer = (char *)malloc((ft_strlen(buffer) - index) * sizeof(char) + 1);
 	if (!new_buffer)
-		return (NULL);
+		return (ft_error(buffer));
 	index++;
 	j = 0;
 	while (buffer[index])
@@ -65,16 +72,9 @@ char	*clear_buffer(char *buffer)
 	return (new_buffer);
 }
 
-char	*ft_error(char *buffer)
-{
-	free(buffer);
-	buffer = NULL;
-	return (NULL);
-}
-
 char	*get_next_line(int fd)
 {
-	static char	*buffer[OPEN_MAX];
+	static char	*buffer[1024];
 	char		*temp;
 	char		*line;
 	char		read_file[BUFFER_SIZE + 1];
@@ -90,6 +90,8 @@ char	*get_next_line(int fd)
 			return (ft_error(buffer[fd]));
 		read_file[bytes_read] = '\0';
 		temp = ft_strjoin(buffer[fd], read_file);
+		if (!temp)
+			return (ft_error(buffer[fd]));
 		free(buffer[fd]);
 		buffer[fd] = temp;
 	}

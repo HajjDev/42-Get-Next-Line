@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cel-hajj <cel-hajj@student.s19.be>         +#+  +:+       +#+        */
+/*   By: cel-hajj <cel-hajj@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 23:00:07 by cel-hajj          #+#    #+#             */
-/*   Updated: 2025/11/09 23:04:00 by cel-hajj         ###   ########.fr       */
+/*   Updated: 2025/11/11 13:11:56 by cel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
 
 /* ************************** */
 /* Buffer Set-Up and Handling */
@@ -27,6 +26,16 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
+# endif
+
+# ifdef BUFFER_SIZE
+#  if BUFFER_SIZE < 0
+#   undef BUFFER_SIZE
+#   define BUFFER_SIZE 42
+#  elif BUFFER_SIZE > 8000000
+#   undef BUFFER_SIZE
+#   define BUFFER_SIZE 1000000
+#  endif
 # endif
 
 /* ********* */
